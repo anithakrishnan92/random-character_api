@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .character_img
+        {
+            height:250px;
+            width:250px;
+            box-shadow:15px 15px 8px black;
+            display:block;
+            margin:auto;
+            padding:20px;
+        }
+        button{
+            display:block;
+            margin:auto;
+
+        }
+        h2{
+            text-align:center;
+            color:red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <button>Get Random Character Information</button>
+    <h2 class="name"></h2>
+    <img src="" alt="" class="character_img">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+        $("button").on("click",function()
+        {
+    const randomNumber= Math.ceil(Math.random()*88)
+    $.get(`https://akabab.github.io/starwars-api/api/id/${randomNumber}.json`,function(data)
+        {
+            console.log(data)
+            $("h2.name").text(data['name'])
+            $(".character_img").attr("src",data['image'])
+
+        })
+    })
+    })
+
+</script>
+</body>
+</html>
