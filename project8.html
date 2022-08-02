@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="name"> Name: <span class="name1"></span></div>
+    <button class="btn">Character Information</button>
+    
+    <script>
+    
+     function EventHandler()
+        {
+
+         var randomNumber = Math.ceil(Math.random()*40)
+         fetch(`https://swapi.dev/api/people/${randomNumber}/`)
+        .then(response => response.json())
+        .then(data =>
+        {
+            console.log(data)
+            const name1 =document.querySelector('.name1');
+            name1.innerText=data.name;
+        })
+    }
+        
+        var btn = document.querySelector('.btn');
+        btn.addEventListener('click', EventHandler)    
+        
+    </script>
+</body>
+</html>
